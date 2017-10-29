@@ -60,7 +60,7 @@
                                 @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="password-confirm">Confirm Password *</label>
+                                    <label for="password-confirm">Confirm Password</label>
                                     <input data-parsley-equalto="#password" type="password" required
                                            placeholder="Password" class="form-control" id="password-confirm" name="password_confirmation">
                                 </div>
@@ -76,4 +76,6 @@
                             </form>
 
 </div>
+
+	
 @endsection

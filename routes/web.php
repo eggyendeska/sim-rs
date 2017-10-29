@@ -24,14 +24,20 @@ Route::get('/', function () {
     Route::get('user/register', 'Auth\RegisterController@showRegistrationForm')->name('user.register');
     Route::post('user/register', 'Auth\RegisterController@register');
 
-    // Password Reset Routes...
-	/*
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-	*/
+	// Dashboard Routes... 
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user', 'UserController@index')->name('user');
-Route::get('/user/{id}/destroy', 'UserController@destroy');
+	// User Routes... 
+	Route::get('/user', 'UserController@index')->name('user');
+	Route::get('/user/{id}/destroy', 'UserController@destroy')->name('user.destroy');
+	
+	// Obat Routes...
+	Route::get('/obat', 'ObatController@index')->name('obat');
+	Route::get('/obat/create', 'ObatController@create')->name('obat.create');
+	Route::post('/obat', 'ObatController@store')->name('obat.store');
+	Route::get('/obat/{id}', 'ObatController@show')->name('obat.show');
+	Route::get('/obat/{id}/edit', 'ObatController@edit')->name('obat.edit');
+	Route::put('/obat/{id}', 'ObatController@update')->name('obat.update');
+	Route::get('/obat/{id}/destroy', 'ObatController@destroy')->name('obat.destroy');
+	
+	// 
