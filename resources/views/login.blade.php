@@ -52,9 +52,9 @@
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" required="" name="email" input id="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
 								@if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <p class="label label-danger">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    </p>
                                 @endif
                             </div>
                         </div>
@@ -63,9 +63,9 @@
                             <div class="col-xs-12">
                                 <input class="form-control" type="password" required="" placeholder="Password" id="password" name="password" required>
 								@if ($errors->has('password'))
-                                    <span class="help-block">
+                                    <p class="label label-danger">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    </p>
                                 @endif
 							</div>
                         </div>

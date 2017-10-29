@@ -9,7 +9,7 @@
                                 <div class="form-group" id="username_form">
                                     <label for="userName">Username</label>
                                     <input type="text" name="username" parsley-trigger="change" required autofocus
-                                           placeholder="Enter Username" class="form-control" id="userName">
+                                           placeholder="Enter Username" value="{{ old('username') }}" class="form-control" id="userName">
 								@if ($errors->has('username'))
                                     <script>
 										document.getElementById("username_form").className = "form-group has-error has-feedback";
@@ -22,7 +22,7 @@
 								<div class="form-group" id="name_form">
                                     <label for="userName">Name</label>
                                     <input type="text" name="name" parsley-trigger="change" required
-                                           placeholder="Enter Name" class="form-control" id="name">
+                                           placeholder="Enter Name" class="form-control" id="name" value="{{ old('name') }}">
 								@if ($errors->has('name'))
                                     <script>
 										document.getElementById("name_form").className = "form-group has-error has-feedback";
@@ -35,7 +35,7 @@
                                 <div class="form-group" id="email_form">
                                     <label for="emailAddress">Email address</label>
                                     <input type="email" name="email" parsley-trigger="change" required
-                                           placeholder="Enter email" class="form-control" id="emailAddress">
+                                           placeholder="Enter email" class="form-control" id="emailAddress" value="{{ old('email') }}">
 								@if ($errors->has('email'))
                                     <script>
 										document.getElementById("email_form").className = "form-group has-error has-feedback";
@@ -48,7 +48,7 @@
                                 <div class="form-group" id="password_form">
                                     <label for="password">Password</label>
                                     <input id="password" type="password" placeholder="Password" required name="password"
-                                           class="form-control">
+                                           class="form-control" value="{{ old('password') }}">
 
 								@if($errors->has('password'))
 									<script>
