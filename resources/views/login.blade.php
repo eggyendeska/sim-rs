@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>SIM Rumah Sakik</title>
 
         <!-- App CSS -->
         <link href="{{ asset('adminto/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />

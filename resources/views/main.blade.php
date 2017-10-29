@@ -117,7 +117,11 @@
 
             <div class="navbar-custom">
                 <div class="container">
-                    @include('menu')
+				@if(Auth::user()->role == "admin")
+                    @include('menu-admin')
+				@else
+					@include('menu-operator')
+				@endif
                 </div>
             </div>
         </header>
