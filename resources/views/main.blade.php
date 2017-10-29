@@ -24,6 +24,10 @@
         <link href="{{ asset('adminto/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('adminto/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('adminto/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+		
+		<!-- Sweet Alert css -->
+        <link href="{{ asset('adminto/plugins/bootstrap-sweetalert/sweet-alert.css') }}" rel="stylesheet" type="text/css" />
+
 
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -325,5 +329,8 @@
             TableManageButtons.init();
 
         </script>
+		
+		<!-- Sweet Alert js -->
+		<script src="{{ asset('adminto/plugins/bootstrap-sweetalert/sweet-alert.min.js') }}"></script>
     </body>
 </html>

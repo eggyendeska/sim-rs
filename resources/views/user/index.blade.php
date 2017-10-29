@@ -23,7 +23,7 @@
 
                                 <tbody>
 									@foreach($users as $user)
-                                    <tr>
+                                    <tr id="{{ $user->id }}">
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->email }}</td>
@@ -43,7 +43,8 @@
 										</td>
                                         <td>
 											<a class="btn btn-icon waves-effect waves-light btn-warning btn-xs" href=""> <i class="fa fa-pencil"></i></a>
-											<a class="btn btn-icon waves-effect waves-light btn-danger btn-xs"> <i class="fa fa-trash"></i></a>	
+											<a class="btn btn-icon waves-effect waves-light btn-danger btn-xs" onclick="warning_hapus('Yakin akan menghapus user ini?','{{ Crypt::encrypt($user->id) }}','{{ $user->id }}')">
+											<i class="fa fa-trash"></i></a>
 										</td>
                                     </tr>
 									@endforeach
@@ -51,4 +52,35 @@
                             </table>
 
 </div>
+<script>
+	function warning_hapus(a,b,c) {
+                swal({
+                    title: "Konfirmasi hapus data",
+                    text: a,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Ya, Hapus Data",
+                    cancelButtonText: "Tidak",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                }, function (isConfirm) {
+                    if (isConfirm) {
+					  $.ajax({
+							type: 'POST',
+							url: "{{url('user')}}/"+b+"/destroy/",
+							success: function(data) {
+							if(data=='1'){
+								swal("Deleted!", "Data telah dihapus!", "success");
+								$("#"+c).delay("fast").fadeOut();
+							}else{
+								swal("Failed!", "Data gagal dihapus!", "error");
+							}
+							}
+						})
+                    }
+                });
+            
+        }
+</script>
 @endsection

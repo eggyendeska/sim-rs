@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Response;
 use App\User;
-
+use Illuminate\Contracts\Encryption\DecryptException;
+use \Crypt;
 class UserController extends Controller
 {
     /**
@@ -31,5 +32,20 @@ class UserController extends Controller
 					->with('title','Data User')
 					->with('users',$users);
     }
+	
+	public function destroy($id){
+		try {
+			$id = Crypt::decrypt($id);
+		} catch (DecryptException $e) {
+			return "error";
+		}
+		$users = User::find($id);
+		if($users->delete()){
+			echo 1;
+		}else{
+			echo 0;
+		}
+		
+	}
 	
 }
