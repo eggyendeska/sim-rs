@@ -37,14 +37,11 @@ class UserController extends Controller
 		try {
 			$id = Crypt::decrypt($id);
 		} catch (DecryptException $e) {
-			return "error";
+			return 0;
 		}
 		$users = User::find($id);
-		if($users->delete()){
-			echo 1;
-		}else{
-			echo 0;
-		}
+		$users->delete();
+		return 1;
 		
 	}
 	

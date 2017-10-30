@@ -142,14 +142,14 @@
 							<div class="btn-group pull-right m-t-10" id="alert">
 								<div class="alert alert-danger alert-dismissable">
 								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-								  <span><b>{{ session()->get('alert-danger') }}</b></span>
+								  <span><strong>{{ session()->get('alert-danger') }}</strong></span>
 								</div>
 							</div>
 						@elseif ( session()->has('alert-success') )
 							 <div class="btn-group pull-right m-t-10" id="alert">
 								<div class="alert alert-success alert-dismissable">
 								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-								  <span>{{ session()->get('alert-success') }}</span>
+								  <span><strong>{{ session()->get('alert-success') }}</strong></span>
 								</div>
 							</div>
 						@endif

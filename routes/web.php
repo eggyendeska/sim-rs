@@ -38,6 +38,15 @@ Route::get('/', function () {
 	Route::get('/obat/{id}', 'ObatController@show')->name('obat.show');
 	Route::get('/obat/{id}/edit', 'ObatController@edit')->name('obat.edit');
 	Route::put('/obat/{id}', 'ObatController@update')->name('obat.update');
+	Route::patch('/obat/{id}', 'ObatController@update')->name('obat.update');
 	Route::get('/obat/{id}/destroy', 'ObatController@destroy')->name('obat.destroy');
 	
-	// 
+	// Stock Obat Routes...
+	Route::get('/obat/{kode}/stock', 'StockObatController@index')->name('obat.stock');
+	Route::get('/stock/{id}/destroy', 'StockObatController@destroy')->name('stock.destroy');
+	Route::get('/obat/{kode}/stock/create', 'StockObatController@create')->name('stock.create');
+	Route::post('/obat/{kode}/stock', 'StockObatController@store')->name('stock.store');
+	Route::get('/obat/{kode}/{id}/edit', 'StockObatController@edit')->name('stock.edit');
+	Route::put('/obat/{kode}/{id}/', 'StockObatController@update')->name('stock.update');
+	Route::patch('/obat/{kode}/{id}/', 'StockObatController@update')->name('stock.update');
+	

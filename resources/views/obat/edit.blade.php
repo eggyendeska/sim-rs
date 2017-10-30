@@ -4,13 +4,13 @@
 	<h3 class="panel-title">Form Tambah Obat</h3>
 </div>
 <div class="panel-body">
-						<form class="form-horizontal" method="POST" action="{{ route('obat.store') }}">
-                        {{ csrf_field() }}
-                                
+						<form class="form-horizontal" method="POST" action="{{ url('obat/'. $obat->id ) }}">
+                        {{ csrf_field() }}{{ method_field('PUT') }}
+                                <input type="hidden" name="id" value="{{ $obat->id }}">
 								<div class="form-group" id="name_form">
                                     <label for="userName">Nama</label>
                                     <input type="text" name="nama" parsley-trigger="change" required
-                                           placeholder="Masukkan Nama Obat" class="form-control" id="nama" value="{{ old('nama') }}">
+                                           placeholder="Masukkan Nama Obat" class="form-control" id="nama" value="{{ $obat->nama }}">
 								@if ($errors->has('nama'))
                                     <script>
 										document.getElementById("name_form").className = "form-group has-error has-feedback";
@@ -23,7 +23,7 @@
 								<div class="form-group" id="kode_form">
                                     <label for="userName">Kode</label>
                                     <input type="text" name="kode" parsley-trigger="change" required
-                                           placeholder="Masukkan Kode Obat" class="form-control" id="kode" value="{{ old('kode') }}">
+                                           placeholder="Masukkan Kode Obat" class="form-control" id="kode" value="{{ $obat->kode }}">
 								@if ($errors->has('kode'))
                                     <script>
 										document.getElementById("kode_form").className = "form-group has-error has-feedback";
@@ -36,7 +36,7 @@
 								<div class="form-group" id="harga_form">
                                     <label for="userName">Harga</label>
                                     <input type="text" name="harga" parsley-trigger="change" required
-                                           placeholder="Masukkan Harga Obat" class="form-control" id="harga" value="{{ old('harga') }}">
+                                           placeholder="Masukkan Harga Obat" class="form-control" id="harga" value="{{ $obat->harga }}">
 								@if ($errors->has('harga'))
                                     <script>
 										document.getElementById("harga_form").className = "form-group has-error has-feedback";
@@ -49,7 +49,7 @@
 								<div class="form-group" id="status_form">
                                     <label for="userName">Status</label>
                                     <input type="text" name="status" parsley-trigger="change" required
-                                           placeholder="Masukkan Nama" class="form-control" id="status" value="{{ old('status') }}">
+                                           placeholder="Masukkan Nama" class="form-control" id="status" value="{{ $obat->status }}">
 								@if ($errors->has('status'))
                                     <script>
 										document.getElementById("status_form").className = "form-group has-error has-feedback";

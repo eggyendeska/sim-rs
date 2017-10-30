@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateObatsTable extends Migration
+class CreateStockObatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateObatsTable extends Migration
      */
     public function up()
     {
-		Schema::dropIfExists('obats');
-        Schema::create('obats', function (Blueprint $table) {
+        Schema::create('stock_obats', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('nama');
-			$table->string('kode',128)->unique();
-			$table->integer('harga')->unsigned();
-			$table->integer('status')->unsigned();
+			$table->string('kode_obat')->references('kode')->on('obats')->onUpdate('cascade')->onDelete('cascade');
+			$table->string('kode_stock');
+			$table->integer('stock_awal')->unsigned();
+			$table->integer('stock_sekarang')->unsigned();
+			$table->date('tanggal_kadaluarsa');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateObatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obats');
+        Schema::dropIfExists('stock_obats');
     }
 }

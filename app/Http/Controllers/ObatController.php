@@ -57,8 +57,6 @@ class ObatController extends Controller
         Obat::create([
             'nama' => $request['nama'],
             'kode' => $request['kode'],
-            'jumlah_awal' => $request['jumlah'],
-            'jumlah_stock' => $request['jumlah'],
             'harga' => $request['harga'],
             'status' => $request['status'],
         ]);
@@ -83,9 +81,19 @@ class ObatController extends Controller
      * @param  \App\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Obat $obat)
+    public function edit($id)
     {
-        //
+        try {
+			$id = Crypt::decrypt($id);
+		} catch (DecryptException $e) {
+			return 0;
+		}
+		
+		$obats = Obat::find($id);
+		return view('obat/edit')
+					->with('title','Edit Data Obat')
+					->with('obat',$obats);
+		
     }
 
     /**
@@ -95,9 +103,23 @@ class ObatController extends Controller
      * @param  \App\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Obat $obat)
+    public function update($id, StoreObat $request)
     {
-        //
+		$obat = Obat::find($id);
+		if(empty($obat)){
+			return back()->with('alert-danger',
+								'Terjadi kesalahan, ID obat tidak ditemukan!');
+		}
+        Obat::where('id',$id)
+				->update([
+					'nama' => $request['nama'],
+					'kode' => $request['kode'],
+					'harga' => $request['harga'],
+					'status' => $request['status'],
+				]);
+				
+		return redirect('obat')->with('alert-success',
+									'Data obat telah diperbarui!');
     }
 
     /**
@@ -111,13 +133,11 @@ class ObatController extends Controller
         try {
 			$id = Crypt::decrypt($id);
 		} catch (DecryptException $e) {
-			return "error";
+			return 0;
 		}
 		$obats = Obat::find($id);
-		if($obats->delete()){
-			echo 1;
-		}else{
-			echo 0;
-		}
+		$obats->delete();
+		return 1;
+	
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-class StoreObat extends FormRequest
+
+class StoreStock extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +23,7 @@ class StoreObat extends FormRequest
      */
     public function rules()
     {
-		switch($this->method())
+        switch($this->method())
 		{
 			case 'GET':
 			case 'DELETE':
@@ -32,21 +33,18 @@ class StoreObat extends FormRequest
 			case 'POST':
 			{
 				return [
-					'nama' 			=> 'required|string|max:255',
-					'kode' 			=> 'required|string|max:255|unique:obats',
-					'harga'			=> 'required|integer',
+					'jumlah_awal'			=> 'required|integer',
+					'tanggal_kadaluarsa'	=> 'required|date',
 				];
-				
 			}
 			case 'PUT':
 			case 'PATCH':
 			{
 				return [
-					'nama' 			=> 'required|string|max:255',
-					'kode' 			=> 'required|string|max:255|unique:obats,id,'. $this->id,
-					'harga'			=> 'required|integer',
+					'jumlah_awal'			=> 'required|integer',
+					'jumlah_sekarang'		=> 'required|integer',
+					'tanggal_kadaluarsa'	=> 'required|date',
 				];
-				
 			}
 			default:break;
 		}

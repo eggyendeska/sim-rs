@@ -1,40 +1,32 @@
 @extends('main')
 @section('content')
 <div class="panel-heading">
-<a type="button" class="pull-right btn btn-custom waves-effect waves-light" href="{{ url('obat/create') }}"><i class="fa fa-medkit"></i> Tambah Obat</span></a>
-	<h3 class="panel-title">Tabel Data Obat</h3>
+<a type="button" class="pull-right btn btn-custom waves-effect waves-light" href="{{ url('obat/'.$kode.'/stock/create') }}"><i class="fa fa-medkit"></i> Tambah Stock Obat</span></a>
+	<h3 class="panel-title">Tabel Data Stock</h3>
 </div>
 <div class="panel-body">
    <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Kode</th>
-                                        <th>Harga</th>
-                                        <th>Status</th>
+                                        <th>Kode Stock</th>
+                                        <th>Stock Awal</th>
+                                        <th>Stock Sekarang</th>
+                                        <th>Tanggal Kadaluarsa</th>
                                         <th><i class="fa fa-spin fa-cog"></i></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-									@foreach($obats as $obat)
-                                    <tr id="{{ $obat->id }}">
-                                        <td>{{ $obat->nama }}</td>
-                                        <td>{{ $obat->kode }}</td>
-                                        <td>{{ $obat->harga }}</td>
+									@foreach($stocks as $stock)
+                                    <tr id="{{ $stock->id }}">
+                                        <td>{{ $stock->kode_stock }}</td>
+                                        <td>{{ $stock->stock_awal }}</td>
+                                        <td>{{ $stock->stock_sekarang }}</td>
+                                        <td>{{ $stock->tanggal_kadaluarsa }}</td>
                                         <td>
-										@if($obat->status==1)
-											<span class="label label-purple">Tersedia</span>
-										@else
-											<span class="label label-inverse">Tidak Tersedia</span>
-										@endif
-										</td>
-                                        <td>
-											<a class="btn btn-icon waves-effect waves-light btn-info btn-xs" href="{{ url('obat/'.$obat->kode.'/stock') }}"> 
-											<i class="fa fa-search"></i></a>
-											<a class="btn btn-icon waves-effect waves-light btn-warning btn-xs" href="{{ url('obat/'.Crypt::encrypt($obat->id).'/edit') }}"> 
+											<a class="btn btn-icon waves-effect waves-light btn-warning btn-xs" href="{{ url('obat/'.$kode.'/'.Crypt::encrypt($stock->id).'/edit') }}"> 
 											<i class="fa fa-pencil"></i></a>
-											<a class="btn btn-icon waves-effect waves-light btn-danger btn-xs" onclick="warning_hapus('Yakin akan menghapus obat ini?','{{ Crypt::encrypt($obat->id) }}','{{ $obat->id }}')">
+											<a class="btn btn-icon waves-effect waves-light btn-danger btn-xs" onclick="warning_hapus('Yakin akan menghapus data stock ini?','{{ Crypt::encrypt($stock->id) }}','{{ $stock->id }}')">
 											<i class="fa fa-trash"></i></a>
 										</td>
                                     </tr>
@@ -59,7 +51,7 @@
                     if (isConfirm) {
 					  $.ajax({
 							type: 'POST',
-							url: "{{url('obat')}}/"+b+"/destroy/",
+							url: "{{url('stock')}}/"+b+"/destroy/",
 							success: function(data) {
 							if(data=='1'){
 								swal("Deleted!", "Data telah dihapus!", "success");
