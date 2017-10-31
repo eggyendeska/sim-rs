@@ -35,6 +35,7 @@ class StoreObat extends FormRequest
 					'nama' 			=> 'required|string|max:255',
 					'kode' 			=> 'required|string|max:255|unique:obats',
 					'harga'			=> 'required|integer',
+					'harga'			=> 'required|string',
 				];
 				
 			}
@@ -45,6 +46,7 @@ class StoreObat extends FormRequest
 					'nama' 			=> 'required|string|max:255',
 					'kode' 			=> 'required|string|max:255|unique:obats,id,'. $this->id,
 					'harga'			=> 'required|integer',
+					'harga'			=> 'required|string',
 				];
 				
 			}

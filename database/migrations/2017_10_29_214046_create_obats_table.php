@@ -19,6 +19,7 @@ class CreateObatsTable extends Migration
 			$table->string('nama');
 			$table->string('kode',128)->unique();
 			$table->integer('harga')->unsigned();
+			$table->string('satuan');
 			$table->integer('status')->unsigned();
             $table->timestamps();
         });

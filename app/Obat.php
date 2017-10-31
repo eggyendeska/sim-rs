@@ -9,7 +9,7 @@ class Obat extends Model
 	public $primarykey = 'id';
 	protected $table = 'obats';
     protected $fillable = [
-        'nama', 'kode', 'harga', 'status'
+        'nama', 'kode', 'harga', 'status' ,'satuan'
     ];
 	
 	public function Stocks(){

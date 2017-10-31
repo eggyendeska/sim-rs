@@ -46,10 +46,30 @@
                                     </p>
                                 @endif
                                 </div>
+								<div class="form-group" id="satuan_form">
+                                    <label for="userName">Satuan</label>
+									<select class="form-control select2" name="satuan" id="satuan">
+										<option>Pilih Satuan</option>                             
+										<option value="Butir" @if(old('satuan') == "Butir") Selected @endif>Butir</option>      
+										<option value="Botol" @if(old('satuan') == "Botol") Selected @endif>Botol</option>
+									</select>
+
+								@if ($errors->has('satuan'))
+                                    <script>
+										document.getElementById("satuan_form").className = "form-group has-error has-feedback";
+									</script>
+                                    <p class="label label-danger">
+                                        <strong>{{ $errors->first('satuan') }}</strong>
+                                    </p>
+                                @endif
+                                </div>
 								<div class="form-group" id="status_form">
                                     <label for="userName">Status</label>
-                                    <input type="text" name="status" parsley-trigger="change" required
-                                           placeholder="Masukkan Nama" class="form-control" id="status" value="{{ old('status') }}">
+                                    <select class="form-control select2" name="status" id="status">
+										<option>Pilih Status</option>                             
+										<option value="1" @if(old('status') == "1") Selected @endif>Tersedia</option>      
+										<option value="0" @if(old('status') == "0") Selected @endif>Tidak Tersedia</option>
+									</select>
 								@if ($errors->has('status'))
                                     <script>
 										document.getElementById("status_form").className = "form-group has-error has-feedback";

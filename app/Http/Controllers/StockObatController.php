@@ -11,6 +11,16 @@ use \Crypt;
 
 class StockObatController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');			
+    }
+	
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +33,7 @@ class StockObatController extends Controller
 		return view('obat/stock')
 					->with('title','Data Stock Obat "'.$obat->nama.'"')
 					->with('stocks',$stocks)
-					->with('kode',$kode);
+					->with('obat',$obat);
     }
 
     /**

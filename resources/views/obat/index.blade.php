@@ -10,6 +10,7 @@
                                     <tr>
                                         <th>Nama</th>
                                         <th>Kode</th>
+                                        <th>Jumlah Stock</th>
                                         <th>Harga</th>
                                         <th>Status</th>
                                         <th><i class="fa fa-spin fa-cog"></i></th>
@@ -21,6 +22,7 @@
                                     <tr id="{{ $obat->id }}">
                                         <td>{{ $obat->nama }}</td>
                                         <td>{{ $obat->kode }}</td>
+										<td>{{ App\StockObat::cek_stock($obat->kode) }} {{ $obat->satuan }}</td>
                                         <td>{{ $obat->harga }}</td>
                                         <td>
 										@if($obat->status==1)

@@ -18,7 +18,7 @@ class ObatController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');			
+        $this->middleware('auth');			
     }
 	
     /**
@@ -31,9 +31,9 @@ class ObatController extends Controller
         $obats = Obat::all();
 		return view('obat/index')
 					->with('title','Data Obat')
-					->with('obats',$obats);
-				
+					->with('obats',$obats);			
     }
+	
 
     /**
      * Show the form for creating a new resource.
@@ -58,6 +58,7 @@ class ObatController extends Controller
             'nama' => $request['nama'],
             'kode' => $request['kode'],
             'harga' => $request['harga'],
+            'satuan' => $request['satuan'],
             'status' => $request['status'],
         ]);
 		
@@ -115,6 +116,7 @@ class ObatController extends Controller
 					'nama' => $request['nama'],
 					'kode' => $request['kode'],
 					'harga' => $request['harga'],
+					'satuan' => $request['satuan'],
 					'status' => $request['status'],
 				]);
 				

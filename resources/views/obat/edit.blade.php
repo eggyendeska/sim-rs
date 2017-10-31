@@ -4,7 +4,7 @@
 	<h3 class="panel-title">Form Tambah Obat</h3>
 </div>
 <div class="panel-body">
-						<form class="form-horizontal" method="POST" action="{{ url('obat/'. $obat->id ) }}">
+						<form class="form-horizontal col-lg-6" method="POST" action="{{ url('obat/'. $obat->id ) }}">
                         {{ csrf_field() }}{{ method_field('PUT') }}
                                 <input type="hidden" name="id" value="{{ $obat->id }}">
 								<div class="form-group" id="name_form">
@@ -46,10 +46,29 @@
                                     </p>
                                 @endif
                                 </div>
+								<div class="form-group" id="satuan_form">
+                                    <label for="userName">Satuan</label>
+                                    <select class="form-control select2" name="satuan" id="satuan">
+										<option>Pilih Satuan</option>                             
+										<option value="Butir" @if($obat->satuan == "Butir") Selected @endif>Butir</option>      
+										<option value="Botol" @if($obat->satuan == "Botol") Selected @endif>Botol</option>
+									</select>
+								@if ($errors->has('satuan'))
+                                    <script>
+										document.getElementById("satuan_form").className = "form-group has-error has-feedback";
+									</script>
+                                    <p class="label label-danger">
+                                        <strong>{{ $errors->first('satuan') }}</strong>
+                                    </p>
+                                @endif
+                                </div>
 								<div class="form-group" id="status_form">
                                     <label for="userName">Status</label>
-                                    <input type="text" name="status" parsley-trigger="change" required
-                                           placeholder="Masukkan Nama" class="form-control" id="status" value="{{ $obat->status }}">
+                                    <select class="form-control select2" name="status" id="status">
+										<option>Pilih Status</option>                             
+										<option value="1" @if($obat->status == "1") Selected @endif>Tersedia</option>      
+										<option value="0" @if($obat->status == "0") Selected @endif>Tidak Tersedia</option>
+									</select>
 								@if ($errors->has('status'))
                                     <script>
 										document.getElementById("status_form").className = "form-group has-error has-feedback";

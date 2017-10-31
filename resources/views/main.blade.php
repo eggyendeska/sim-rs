@@ -27,6 +27,11 @@
 		
 		<!-- Sweet Alert css -->
         <link href="{{ asset('adminto/plugins/bootstrap-sweetalert/sweet-alert.css') }}" rel="stylesheet" type="text/css" />
+		
+		<!-- Select 2 -->
+		<link href="{{ asset('adminto/plugins/select2/dist/css/select2.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('adminto/plugins/select2/dist/css/select2-bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
 
 
 
@@ -332,5 +337,16 @@
 		
 		<!-- Sweet Alert js -->
 		<script src="{{ asset('adminto/plugins/bootstrap-sweetalert/sweet-alert.min.js') }}"></script>
+		
+		<!-- Select2 js -->
+		<script src="{{ asset('adminto/plugins/select2/dist/js/select2.min.js') }}" type="text/javascript"></script>
+		<script type="text/javascript">
+            $(".select2").select2();
+
+            $(".select2-limiting").select2({
+				 maximumSelectionLength: 2
+			});
+		</script>
+
     </body>
 </html>

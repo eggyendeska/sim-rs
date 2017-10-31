@@ -14,4 +14,9 @@ class StockObat extends Model
 	public function Obat(){
 		return $this->belongsTo('App\Obat');
 	}
+	
+	public static function cek_stock($kode)
+	{
+		return StockObat::where('kode_obat',$kode)->sum('stock_sekarang');
+	}
 }
